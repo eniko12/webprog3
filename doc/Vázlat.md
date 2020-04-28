@@ -9,7 +9,7 @@ A kvíz végén a felhasználó megnézheti az eredményeket, a helyes és az el
 - HaromFelelet: A 3 válaszlehetőséges kérdések
 - Kifejtos: önállóan beírt válaszokkal
 - IgenNemFelelet: eldöntendő kérdések
-- Kerdesek: A 3 kérdés típusból
+- Osszes: A 3 kérdés típusból az összes kérdés egyben
 - KerdesTipus: A különböző kérdéseket kapcsolja össze az összes kérdéssel
 - User: adminok és felhasználók
 
