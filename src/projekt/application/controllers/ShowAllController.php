@@ -7,25 +7,21 @@ class ShowAllController extends CI_Controller{
     }
     
     public function show(){
-        $record1 = $this->ShowAllModel->showYN();  
-        $record2 = $this->ShowAllModel->showThreeAns();
-        if($record1 == NULL && $record2 == NULL){
+        $recordYN = $this->ShowAllModel->showYN();  
+        $recordThreeAns = $this->ShowAllModel->showThreeAns();
+        if($recordYN == NULL && $recordThreeAns == NULL){
             show_error('Nem található egy kérdés sem!');
         }       
        else{   
-           $listYN = array();
-           foreach ($record1 as $q):
-               array_push($listYN, $this->ShowAllModel->getQByIdYN($q->id));  
-           endforeach;
-           $listThreeAns = array();
-           foreach ($record2 as $q):
-               array_push($listThreeAns, $this->ShowAllModel->getQByIdThreeAns($q->id));  
-           endforeach;
+           $listYN = $this->makeQuestionListYN($recordYN);
+           $listThreeAns = $this->makeQuestionListThreeAns($recordThreeAns);
+           $answerListThreeAns = $this->makeAnswerListThreeAns($recordThreeAns);
            $view_params = [
-               'q1'    =>  $record1,
-               'q2' => $record2,
+               'q1'    =>  $recordYN,
+               'q2' => $recordThreeAns,
                'YNQ' => $listYN,
-               'ThreeAns' => $listThreeAns
+               'ThreeAns' => $listThreeAns,
+               'Answer' => $answerListThreeAns
             ];
 
             $this->load->helper('form');           
@@ -33,6 +29,29 @@ class ShowAllController extends CI_Controller{
     }
     }
     
+    public function makeQuestionListYN($record1){
+        $listYN = array();
+        foreach ($record1 as $q):
+            array_push($listYN, $this->ShowAllModel->getQByIdYN($q->id));  
+        endforeach;
+        return $listYN;        
+    }
+    
+    public function makeQuestionListThreeAns($record2){
+      $listThreeAns = array();
+      foreach ($record2 as $q):
+        array_push($listThreeAns, $this->ShowAllModel->getQByIdThreeAns($q->id));  
+      endforeach;
+      return $listThreeAns;
+    }
+    
+    public function makeAnswerListThreeAns($record2){
+      $answerListThreeAns = array();
+      foreach ($record2 as $q):
+        array_push($answerListThreeAns, $this->ShowAllModel->getAnsById($q->id));  
+      endforeach;
+      return $answerListThreeAns;
+    }
    
     
 }

@@ -27,7 +27,7 @@ class ShowAllModel extends CI_Model{
         return $this->getQuestion($qId);        
     }
     
-      public function getQByIdThreeAns($id){
+    public function getQByIdThreeAns($id){
         $this->db->select('*');
         $this->db->from('threeansq');
         $this->db->where('id',$id);
@@ -43,6 +43,26 @@ class ShowAllModel extends CI_Model{
         
         $row = $this->db->get()->row();
         $result = $row->question;
+        
+        return $result;
+    }
+    
+    public function getAnsById($id){
+        $this->db->select('*');
+        $this->db->from('threeansq');
+        $this->db->where('id',$id);
+        $row = $this->db->get()->row();
+        $aId = $row->ans_id;
+        return $this->getAnswer($aId);  
+    }
+    
+    public function getAnswer($id){
+        $this->db->select("*");
+        $this->db->from('answer');
+        $this->db->where('id',$id); 
+        
+        $row = $this->db->get()->row();
+        $result = $row;
         
         return $result;
     }
