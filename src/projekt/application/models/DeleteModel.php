@@ -4,8 +4,8 @@ class DeleteModel extends CI_Model{
             parent::__construct();
 
             $this->load->database();
-            $this->load->model('YNQuestionModel');
-            $this->load->model('ThreeAnsQuestionModel');
+            $this->load->model('HelperModels/YNQuestionModel');
+            $this->load->model('HelperModels/ThreeAnsQuestionModel');
        }
    
    
