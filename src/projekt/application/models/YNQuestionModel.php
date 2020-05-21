@@ -30,10 +30,16 @@ class YNQuestionModel extends CI_Model{
     }
     
     public function deleteYN($id){
+        $this->db->select('*');
+        $this->db->from('yesnoq');
         $this->db->where('id',$id);
+        $row = $this->db->get()->row();
+        $qId = $row->question_id;
+        $this->db->where('id',$qId);
         $this->db->delete('questions');
-        $this->db->where('id',$id);
-        return $this->db->delete('yesnoq');
+        
+       $this->db->where('id',$id);
+       $this->db->delete('yesnoq');
     }
     
       public function editYN($id, String $question, $ans){
