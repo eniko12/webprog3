@@ -4,29 +4,35 @@ class ShowAll extends CI_Controller{
         parent::__construct();
         
         $this->load->model('ShowAll_model');
+        $this->load->model('User_model');
     }
     
     public function show(){
-        $recordYN = $this->ShowAll_model->showYN();  
+        if($this->User_model->IsLoggedIn()){
+            $recordYN = $this->ShowAll_model->showYN();  
         $recordThreeAns = $this->ShowAll_model->showThreeAns();
-        if($recordYN == NULL && $recordThreeAns == NULL){
-            show_error('Nem található egy kérdés sem!');
-        }       
-       else{   
-           $listYN = $this->makeQuestionListYN($recordYN);
-           $listThreeAns = $this->makeQuestionListThreeAns($recordThreeAns);
-           $answerListThreeAns = $this->makeAnswerListThreeAns($recordThreeAns);
-           $view_params = [
-               'q1'    =>  $recordYN,
-               'q2' => $recordThreeAns,
-               'YNQ' => $listYN,
-               'ThreeAns' => $listThreeAns,
-               'Answer' => $answerListThreeAns
-            ];
+            if($recordYN == NULL && $recordThreeAns == NULL){
+                show_error('Nem található egy kérdés sem!');
+            }       
+           else{   
+               $listYN = $this->makeQuestionListYN($recordYN);
+               $listThreeAns = $this->makeQuestionListThreeAns($recordThreeAns);
+               $answerListThreeAns = $this->makeAnswerListThreeAns($recordThreeAns);
+               $view_params = [
+                   'q1'    =>  $recordYN,
+                   'q2' => $recordThreeAns,
+                   'YNQ' => $listYN,
+                   'ThreeAns' => $listThreeAns,
+                   'Answer' => $answerListThreeAns
+                ];
 
-            $this->load->helper('form');           
-            $this->load->view('Main/ShowAll',$view_params);
-    }
+                $this->load->helper('form');           
+                $this->load->view('Main/ShowAll',$view_params);
+            }
+        }else{
+            redirect(base_url().'Login/login');
+        }
+        
     }
     
     public function makeQuestionListYN($record1){

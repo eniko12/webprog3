@@ -79,5 +79,44 @@ class User_model extends CI_Model{
        $result = $query->result(); 
     
        return $result;    
-    }    
-  }
+    }   
+    
+    public function IsLoggedIn(){
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('loggedin',1);  
+        $query =$this->db->get();
+        $result_array = $query->result();
+        $result = count($result_array);
+        
+        if($result>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    } 
+    
+    public function getLoggedInId(){
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('loggedin',1);  
+        $query =$this->db->get();
+        $result_array = $query->result();
+        $user = $result_array[0];
+        $user_id= $user->id;
+        return $user_id;
+    }
+    
+    public function isAdmin($id){
+        $u =$this->getById($id);
+        $user=$u[0];
+        if($user->admin == 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+ }  
+  

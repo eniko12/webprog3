@@ -31,8 +31,8 @@
                 <li>
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Kérdés hozzáadás</a>
-                        <a class="dropdown-item" href="<?php echo base_url(); ?>ShowAll/show">Összes kérdés</a>
+                        <a class="dropdown-item" href="<?php echo base_url(); ?>Admin/addThreeAns">Kérdés hozzáadás</a>
+                        <a class="dropdown-item" href="<?php echo base_url(); ?>Admin/show">Összes kérdés</a>
                         <a class="dropdown-item" href="#">Kérdés módosítása</a>
                         <a class="dropdown-item" href="#">Kérdés törlése</a>
                         <div class="dropdown-divider"></div>
@@ -100,7 +100,7 @@
        
 <footer class="page-footer font-small blue fixed-bottom">
     <div class="container">
-       <p>&copy; 2020 MyQuize All rights reserved.</p>
+       <p>&copy; 2020 MyQuiz All rights reserved.</p>
     </div>
 </footer>
 </body>

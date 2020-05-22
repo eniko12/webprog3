@@ -8,10 +8,12 @@ class Random extends CI_Controller{
         $this->load->model('HelperModels/YNQuestion_model');
         $this->load->model('HelperModels/ThreeAnsQuestion_model');
         $this->load->model('HelperModels/Answer_model');
+        $this->load->model('User_model');
     }
     
     public function play(){
-        $YNQuestions = $this->Random_model->getRandomYNQ();
+    if($this->User_model->IsLoggedIn()){
+            $YNQuestions = $this->Random_model->getRandomYNQ();
         $ThreeAnsQuestions = $this->Random_model->getRandomThreeAnsQ();        
         if($YNQuestions == NULL && $ThreeAnsQuestions == NULL){
             show_error('Nem található egy kérdés sem!');
@@ -20,17 +22,17 @@ class Random extends CI_Controller{
            $listYN = $this->makeQuestionListYN($YNQuestions);
            $listThreeAns = $this->makeQuestionListThreeAns($ThreeAnsQuestions);
            $answerListThreeAns = $this->makeAnswerListThreeAns($ThreeAnsQuestions);
-           $view_params = [
-               'q1'    =>  $YNQuestions,
-               'q2' => $ThreeAnsQuestions,
-               'YNQ' => $listYN,
-               'ThreeAns' => $listThreeAns,
+           $view_params = ['q1'    =>  $YNQuestions, 'q2' => $ThreeAnsQuestions,
+               'YNQ' => $listYN, 'ThreeAns' => $listThreeAns,
                'Answer' => $answerListThreeAns
             ];
-
             $this->load->helper('form');           
             $this->load->view('Main/Quiz',$view_params);
-    }}
+        }
+    }
+    else{
+         redirect(base_url().'Login/login');
+    }    }
     
     
     public function makeQuestionListYN($record1){

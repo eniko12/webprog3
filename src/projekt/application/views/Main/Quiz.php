@@ -31,8 +31,8 @@
                 <li>
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Kérdés hozzáadás</a>
-                        <a class="dropdown-item" href="<?php echo base_url(); ?>ShowAll/show">Összes kérdés</a>
+                        <a class="dropdown-item" href="<?php echo base_url(); ?>Admin/addThreeAns">Kérdés hozzáadás</a>
+                        <a class="dropdown-item" href="<?php echo base_url(); ?>Admin/show">Összes kérdés</a>
                         <a class="dropdown-item" href="#">Kérdés módosítása</a>
                         <a class="dropdown-item" href="#">Kérdés törlése</a>
                         <div class="dropdown-divider"></div>
@@ -67,15 +67,15 @@
                 <tr><div class="content">
                     <?php echo form_error($i.'ThreeAns'); ?>
                     <td><?php echo form_radio($i.'ThreeAns', $Answer[$i]->a, TRUE); ?></td>
-                    <td><?php echo form_label($Answer[$i]->a, 'first');?></td></div>
+                    <td><?php echo form_label($Answer[$i]->a);?></td></div>
                 </tr><br>
                 <tr><div class="content">
                     <td><?php echo form_radio($i.'ThreeAns', $Answer[$i]->b, FALSE); ?></td>
-                    <td><?php echo form_label($Answer[$i]->b, 'first');?></td></div>
+                    <td><?php echo form_label($Answer[$i]->b);?></td></div>
                 </tr><br>
                 <tr><div class="content">
                     <td><?php echo form_radio($i.'ThreeAns', $Answer[$i]->c, FALSE); ?></td>
-                    <td><?php echo form_label($Answer[$i]->c, 'first');?></td></div>
+                    <td><?php echo form_label($Answer[$i]->c);?></td></div>
                     </tr>
             </div></div>
             <?php endfor; ?>    
@@ -92,11 +92,11 @@
             <div class="answer">
                 <tr><div class="content">
                     <td><?php echo form_radio($i.'YN', 1, TRUE); ?></td>
-                    <td><?php echo form_label('Igaz', 'first');?></td></div>
+                    <td><?php echo form_label('Igaz');?></td></div>
                 </tr><br>
                 <tr><div class="content">
                     <td><?php echo form_radio($i.'YN', 0, FALSE); ?></td>
-                    <td><?php echo form_label('Hamis', 'first');?></td></div>
+                    <td><?php echo form_label('Hamis');?></td></div>
                 </tr>
             </div></div>
             <?php endfor; ?>   
