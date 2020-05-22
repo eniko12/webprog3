@@ -36,36 +36,27 @@
 </nav>
     </header>  
     <div class="container">
-        <h3>Tölts ki a formot a regisztráláshoz!</h3>
+        <h3>Belépés</h3>
         
         <form action="" method="POST">
-        <?php echo form_open('Registration/register'); ?>
-        <div class="col-lg-4">        
+        <?php echo form_open('Login/login'); ?>
+        <div class="col-lg-4 col-lg-offset-2">
+         
             <div class="form-group">
                 <?php echo form_label('Felhasználónév:');?><br>
-                <?php echo form_input('username',set_value('username',''));?><br>
+                <?php echo form_input('username', '');?><br>
             </div>
-            
-            <div>
-                
-           <div class="form-group">
-               <?php echo form_label('Email cím:');?><br>             
-               <?php echo form_input('email', set_value('email',''));?><br>
-           </div>
-            
+           
             <div class="form-group">
                 <?php echo form_label('Jelszó:');?><br>
                <?php echo form_password('password', '');?><br>
             </div>
-                
-            <div class="form-group"> <?php echo form_label('Jelszó megerősítése:');?><br>  
-                <?php echo form_password('password2', '');?><br>
-            </div>
             
             <div class="form-group">
-                <?php echo form_submit('register', 'Regisztáció');?>
+                <?php echo form_submit('login', 'Belépés');?>
             </div>
         </form>
+         <?php echo validation_errors(); ?>
        
 
 
@@ -82,4 +73,3 @@
 </footer>
 </body>
 </html>
-    

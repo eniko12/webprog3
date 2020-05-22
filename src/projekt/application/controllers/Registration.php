@@ -4,7 +4,7 @@ class Registration extends CI_Controller{
         parent::__construct();
         
         $this->load->model('Registration_model');
-        $this->load->library('form_validation');
+        
     }
     
     
@@ -12,22 +12,23 @@ class Registration extends CI_Controller{
         $this->load->view('User/Registration');
     }
     public function register(){
+       $this->load->library('form_validation');
        $this->startReg();
        $this->load->helper(array('form','url'));
        if($this->input->post('register')){
-           $this->form_validation->set_rules('username', 'Username', 'required');
-           $this->form_validation->set_rules('email', 'Email', 'required');
-           $this->form_validation->set_rules('password', 'Password', 'required');
-           $this->form_validation->set_rules('password2', 'Password', 'required');
-           if ($this->form_validation->run() == FALSE)
+           $this->form_validation->set_rules('username', 'Felhasználónév', 'required|is_unique[user.username]', array('is_unique'=>'Ez a felhasználónév már foglalt'));
+           $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[user.email]',array('valid_email'=>'Érvényes email címet adjon meg! (pl. minta@gmail.com)', 'is_unique'=>'Ezzel az email címmel már regisztráltak!'));
+           $this->form_validation->set_rules('password', 'Jelszó','required');
+           $this->form_validation->set_rules('password2', 'Jelszó megerősítése', 'required|matches[password]',array('matches'=>'A két jelszó nem egyezik!'));
+           if ($this->form_validation->run() == TRUE)
            {
-             show_error('Hibás form!');
-            }
-            else
-            {
               $this->Registration_model->register($this->input->post('email'),$this->input->post('username'),$this->input->post('password'));
-              $this->load->view('User/added');
+              $this->load->view('User/RegSuccess');
             }
+            else{
+                 $this->load->view('User/RegErrors');
+            }
+            
        }    
      }
 

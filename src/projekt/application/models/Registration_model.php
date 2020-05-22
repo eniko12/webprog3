@@ -4,7 +4,7 @@ class Registration_model extends CI_Model{
             parent::__construct();
 
             $this->load->database();
-             $this->load->model('HelperModels/User_model');
+             $this->load->model('User_model');
        }
    
     
@@ -15,7 +15,5 @@ class Registration_model extends CI_Model{
      public function registerAdmin($email, $username, $passw){
         return $this->User_model->addAdmin($email, $username, $passw);    
     }
-    
-        
-    
+ 
 }

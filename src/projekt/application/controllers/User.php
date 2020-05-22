@@ -25,7 +25,26 @@ class User extends CI_Controller{
            
             $this->load->view('User/listAll',$view_params);
         }
-    }    
+    } 
+    
+      public function profilByName($username = NULL){
+        if($username == NULL){
+            show_error('Hiányzik az ID');
+        }    
+        $record = $this->User_model->getByName($username);
+        if($record == NULL){
+            show_error('Nem létezik ilyen rekord!');
+        }       
+       else{            
+            $view_params = [
+                'u'    =>  $record
+            ];
+
+            $this->load->helper('form');
+           
+            $this->load->view('User/listAll',$view_params);
+        }
+    }
     
     public function showAll(){         
         $record = $this->User_model->getAll();
@@ -65,21 +84,21 @@ class User extends CI_Controller{
         $this->load->view('User/deleted');
     }
     
-     public function edit($question, $id = NULL){  
+     public function edit($email,$username,$passw,$admin,$loggedin, $id=NULL){  
         if($id == NULL){
             show_error('A szerkesztéshez adjon meg egy id-t!');
         }    
-        $record = $this->User_model->getById($id);
-        if($record == NULL){
+        $user= $this->User_model->getById($id);
+        if($user == NULL){
             show_error('Nem létezik ilyen rekord!');
         }
-         $this->User_model->edit($id, $question);
+         $this->User_model->edit($id,$email,$username,$passw,$admin,$loggedin);
             $view_params = [
-                'q'    =>  $record
+                'u'    =>  $user
             ];
 
             $this->load->helper('form');
-            $this->load->view('Question/QuestionView',$view_params);
+            $this->load->view('User/listAll',$view_params);
         }
     
 }
