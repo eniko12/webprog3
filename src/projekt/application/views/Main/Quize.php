@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <title>MyQuiz</title>
+    <title>MyQuize</title>
 </head>
 <body>
     <header>
@@ -52,58 +52,67 @@
             
         </div>
     </header> 
-    
-    <div class="container">
-  <table class="table table-responsive">
-  <thead>
-    <tr>
-      <!--<th scope="col">Id</th>-->
-      <th scope="col">Kérdés_Id</th>
-      <th scope="col">Kérdés</th>
-      <th scope="col">Helyes Válasz</th>
-      <th scope="col">A) válasz</th>
-      <th scope="col">B) válasz</th>
-      <th scope="col">C) válasz</th> 
-    </tr>
-  </thead>
-  <tbody>
-    
-      <?php for($i=0; $i<count($q1); $i++): ?>  
-      <tr>
-        <!--<th scope="row"><br><?#  =$q1[$i]->id?></th>-->
-        <td><?=$q1[$i]->question_id?></td> 
-        <td><?=$YNQ[$i]?></td>
-        <td><?=$q1[$i]->answer?><td>
-        <td>-<td> 
-        <td>-<td> 
-        <td>-<td> 
-      </tr>
-      <?php endfor; ?>
-      
-      <?php for($i=0; $i<count($q2); $i++): ?>   
-      <tr>
-        <!--<th scope="row"><br><?#  =$q2[$i]->id?></th>-->
-        <td><?=$q2[$i]->question_id?></td>
-        <td><?=$ThreeAns[$i]?></td>
-        <td><?=$Answer[$i]->correct?><td> 
-        <td><?=$Answer[$i]->a?><td> 
-        <td><?=$Answer[$i]->b?><td> 
-        <td><?=$Answer[$i]->c?><td>    
-      </tr>
-    <?php endfor; ?>
    
+   <div class='container col-lg-4'>
+<?php echo form_open('Random/check');?>
+        <?php for($i=0; $i<=3; $i++) : ?>
+        <div class="card card-random">
+            <div class="question">
+                <div class="content">
+                <p><?=$ThreeAns[$i]?></p>
+                 <?php echo form_hidden($i.'hiddenThreeAnsId',$q2[$i]->id);?>
+                </div>
+            </div>
+            <div class="answer">
+                <tr><div class="content">
+                    <?php echo form_error($i.'ThreeAns'); ?>
+                    <td><?php echo form_radio($i.'ThreeAns', $Answer[$i]->a, TRUE); ?></td>
+                    <td><?php echo form_label($Answer[$i]->a, 'first');?></td></div>
+                </tr><br>
+                <tr><div class="content">
+                    <td><?php echo form_radio($i.'ThreeAns', $Answer[$i]->b, FALSE); ?></td>
+                    <td><?php echo form_label($Answer[$i]->b, 'first');?></td></div>
+                </tr><br>
+                <tr><div class="content">
+                    <td><?php echo form_radio($i.'ThreeAns', $Answer[$i]->c, FALSE); ?></td>
+                    <td><?php echo form_label($Answer[$i]->c, 'first');?></td></div>
+                    </tr>
+            </div></div>
+            <?php endfor; ?>    
+
+
+        <?php for($i=0; $i<=3; $i++) : ?>
+        <div class="card card-random">
+            <div class="question">
+                <div class="content">
+                <p><?= $YNQ[$i]?></p>
+                <?php echo form_hidden($i.'hiddenYNId',$q1[$i]->id);?>
+                </div>
+            </div>
+            <div class="answer">
+                <tr><div class="content">
+                    <td><?php echo form_radio($i.'YN', 1, TRUE); ?></td>
+                    <td><?php echo form_label('Igaz', 'first');?></td></div>
+                </tr><br>
+                <tr><div class="content">
+                    <td><?php echo form_radio($i.'YN', 0, FALSE); ?></td>
+                    <td><?php echo form_label('Hamis', 'first');?></td></div>
+                </tr>
+            </div></div>
+            <?php endfor; ?>   
+            <div class="send">
+                  <?php echo form_submit('send', 'Ellenőrizzük');?>  
+            </div>
+   
+</div>
+
     
-  </tbody>
-</table>
-    </div>
     
-<footer class="page-footer font-small blue fixed-bottom">
+<footer class="page-footer font-small fixed-bottom">
     <div class="container">
        <p>&copy; 2020 MyQuize All rights reserved.</p>
     </div>
 </footer>
 </body>
 </html>
-    
-            
 

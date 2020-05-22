@@ -1,0 +1,32 @@
+.container{
+    padding-top: 10px;
+}
+
+.card-item {
+     margin-bottom: 20px; 
+}
+
+.login{
+    margin-bottom: 20px;
+}
+
+.logout{
+    margin: 20px;
+}
+
+.answer{
+    margin-bottom: 20px;
+}
+
+.card-random{
+    margin-bottom: 20px; 
+}
+
+.content{
+    margin-left: 30px;
+    margin-top: 5px;     
+}
+
+.send{
+    margin-bottom: 100px;
+}

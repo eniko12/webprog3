@@ -10,10 +10,8 @@ class Logout extends CI_Controller{
     
    
     public function logout(){   
-        if($this->input->post('logout')){
             $this->checkUserAndLogout(); 
             $this->load->view('Main/LoggedOut');
-       }
     }
 
     public function checkUserAndLogout(){
