@@ -27,7 +27,11 @@
                 </li> 
                 <li class="nav-item">
                     <a class="nav-link">Profil</a>
-                </li> 
+                </li>
+                <li>
+                     <?php echo form_open('Logout/logout'); ?>
+                    <?php echo form_submit('logout','Kijelentkezés');?>
+                </li>
             </ul>
         </div>
         <!-- collapse  END -->
