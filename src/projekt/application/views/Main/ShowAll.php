@@ -16,7 +16,7 @@
        <nav class="navbar navbar-main navbar-expand navbar-light border-bottom">
     <div class="container">
         <a class="logo" href="#">MyQuize</a>
-        <a class="logo" href="../RegistrationController/register">Regisztráció</a>
+        <a class="logo" href="../Registration/startReg">Regisztráció</a>
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav">
                 <li class="nav-item">
