@@ -11,7 +11,7 @@ class ThreeAnsQuestion extends CI_Controller{
         if($Id == NULL){
             show_error('Hiányzik az ID');
         }    
-        $record = $this->QuestionModel->getQuestionById($Id);
+        $record = $this->ThreeAnsQuestion_model->getById($id);
         if($record == NULL){
             show_error('Nem létezik ilyen rekord!');
         }       

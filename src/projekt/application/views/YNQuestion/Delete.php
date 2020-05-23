@@ -53,52 +53,15 @@
         </div>
 </header> 
     
- <div class="container">
- <div class="row justify-content-center">
- <div class="col-lg-8">
-  <table class="table table-responsive table-bordered table-striped">
-  <thead>
-    <tr>
-      <!--<th scope="col">Id</th>-->
-      <th scope="col">Kérdés_Id</th>
-      <th scope="col">Kérdés</th>
-      <th scope="col">Helyes Válasz</th>
-      <th scope="col">A) válasz</th>
-      <th scope="col">B) válasz</th>
-      <th scope="col">C) válasz</th> 
-    </tr>
-  </thead>
-  <tbody>
-    
-      <?php for($i=0; $i<count($q1); $i++): ?>  
-      <tr>
-        <!--<th scope="row"><br><?#  =$q1[$i]->id?></th>-->
-        <td><?=$q1[$i]->question_id?></td> 
-        <td><?=$YNQ[$i]?></td>
-        <td><?=$q1[$i]->answer?></td>
-        <td>-</td> 
-        <td>-</td> 
-        <td>-</td> 
-      </tr>
-      <?php endfor; ?>
-      
-      <?php for($i=0; $i<count($q2); $i++): ?>   
-      <tr>
-        <!--<th scope="row"><br><?#  =$q2[$i]->id?></th>-->
-        <td><?=$q2[$i]->question_id?></td>
-        <td><?=$ThreeAns[$i]?></td>
-        <td><?=$Answer[$i]->correct?></td> 
-        <td><?=$Answer[$i]->a?></td> 
-        <td><?=$Answer[$i]->b?></td> 
-        <td><?=$Answer[$i]->c?></td>    
-      </tr>
-    <?php endfor; ?>
-   
-    
-  </tbody>
-</table>
- </div></div>
+<div class="row justify-content-center">
+<div class="col col-lg-6">
+<div class="alert alert-success" role="alert">
+
+    <p> A kérdés törölve!</p>
+   <a class="dropdown-item" href="<?php echo base_url(); ?>Admin/delete">Vissza a törlésekhez.</a>
     </div>
+</div>
+
     
 <footer class="page-footer font-small blue fixed-bottom">
     <div class="container">
@@ -108,5 +71,3 @@
 </body>
 </html>
     
-            
-

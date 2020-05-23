@@ -53,52 +53,33 @@
         </div>
 </header> 
     
- <div class="container">
- <div class="row justify-content-center">
- <div class="col-lg-8">
-  <table class="table table-responsive table-bordered table-striped">
-  <thead>
-    <tr>
-      <!--<th scope="col">Id</th>-->
-      <th scope="col">Kérdés_Id</th>
-      <th scope="col">Kérdés</th>
-      <th scope="col">Helyes Válasz</th>
-      <th scope="col">A) válasz</th>
-      <th scope="col">B) válasz</th>
-      <th scope="col">C) válasz</th> 
-    </tr>
-  </thead>
-  <tbody>
-    
-      <?php for($i=0; $i<count($q1); $i++): ?>  
-      <tr>
-        <!--<th scope="row"><br><?#  =$q1[$i]->id?></th>-->
-        <td><?=$q1[$i]->question_id?></td> 
-        <td><?=$YNQ[$i]?></td>
-        <td><?=$q1[$i]->answer?></td>
-        <td>-</td> 
-        <td>-</td> 
-        <td>-</td> 
-      </tr>
-      <?php endfor; ?>
-      
-      <?php for($i=0; $i<count($q2); $i++): ?>   
-      <tr>
-        <!--<th scope="row"><br><?#  =$q2[$i]->id?></th>-->
-        <td><?=$q2[$i]->question_id?></td>
-        <td><?=$ThreeAns[$i]?></td>
-        <td><?=$Answer[$i]->correct?></td> 
-        <td><?=$Answer[$i]->a?></td> 
-        <td><?=$Answer[$i]->b?></td> 
-        <td><?=$Answer[$i]->c?></td>    
-      </tr>
-    <?php endfor; ?>
-   
-    
-  </tbody>
-</table>
- </div></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <h3>Adatok:</h3>
+                <?php foreach($u as &$u): ?>
+                <div class="card">                    
+                    <div class="content">                        
+                        <h6>Email:</h6>
+                        <p><?=$u->email?></p>               
+                         <h6>Felhasználónév:</h6>
+                        <p><?=$u->username?></p>
+                    </div>
+                </div>
+                <?php if($u->admin == 1){?>
+                <div class="card  alert alert-info" role="alert">                    
+                    <div class="content">                        
+                        <h6>Admin jogosultságod van.</h6>
+                    </div>
+                </div>
+                <?php }?>
+               
+             <?php endforeach; ?>             
+            </div>
+        </div>
     </div>
+    
+
     
 <footer class="page-footer font-small blue fixed-bottom">
     <div class="container">
@@ -107,6 +88,5 @@
 </footer>
 </body>
 </html>
-    
-            
+
 

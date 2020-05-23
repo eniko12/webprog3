@@ -19,10 +19,7 @@ class ShowAll extends CI_Controller{
                $listThreeAns = $this->makeQuestionListThreeAns($recordThreeAns);
                $answerListThreeAns = $this->makeAnswerListThreeAns($recordThreeAns);
                $view_params = [
-                   'q1'    =>  $recordYN,
-                   'q2' => $recordThreeAns,
-                   'YNQ' => $listYN,
-                   'ThreeAns' => $listThreeAns,
+                   'q1'    =>  $recordYN,'q2' => $recordThreeAns,'YNQ' => $listYN,'ThreeAns' => $listThreeAns,
                    'Answer' => $answerListThreeAns
                 ];
 

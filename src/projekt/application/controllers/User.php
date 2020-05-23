@@ -8,6 +8,15 @@ class User extends CI_Controller{
     }
     
     
+   public function index(){
+    if($this->User_model->IsLoggedIn()){
+         $id = $this->User_model->getLoggedInId();
+        $this->profil($id);
+    }
+    else{
+         redirect(base_url().'Login/login');
+    }    }
+   
     public function profil($Id = NULL){
         if($Id == NULL){
             show_error('Hiányzik az ID');
@@ -23,7 +32,7 @@ class User extends CI_Controller{
 
             $this->load->helper('form');
            
-            $this->load->view('User/listAll',$view_params);
+            $this->load->view('User/Profil',$view_params);
         }
     } 
     
@@ -42,14 +51,14 @@ class User extends CI_Controller{
 
             $this->load->helper('form');
            
-            $this->load->view('User/listAll',$view_params);
+            $this->load->view('User/Profil',$view_params);
         }
     }
     
     public function showAll(){         
         $record = $this->User_model->getAll();
         if($record == NULL){
-            show_error('Nem található egy kérdés sem!');
+            show_error('Nem található egy regisztrált felhasználó sem!');
         }       
        else{            
             $view_params = [
@@ -57,7 +66,7 @@ class User extends CI_Controller{
             ];
 
             $this->load->helper('form');           
-            $this->load->view('User/listAll',$view_params);
+            $this->load->view('User/Profil',$view_params);
         }      
     }
     
@@ -98,7 +107,7 @@ class User extends CI_Controller{
             ];
 
             $this->load->helper('form');
-            $this->load->view('User/listAll',$view_params);
+            $this->load->view('User/Profil',$view_params);
         }
     
 }

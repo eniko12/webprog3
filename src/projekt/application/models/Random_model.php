@@ -8,7 +8,7 @@ class Random_model extends CI_Model{
        }
    
        
-       public function getRandomYNMaxFromCount(){
+    public function getRandomYNMaxFromCount(){
             $all=$this->ShowAll_model->showYn();
             return count($all)-1;
        }
@@ -24,7 +24,7 @@ class Random_model extends CI_Model{
     }
     
    public function RandomForThreeAns(){    
-        $rnd = rand(0, $this->getRandomYNMaxFromCount());
+        $rnd = rand(0, $this->getRandomThreeAnsMaxFromCount());
         return $rnd;
     }
     

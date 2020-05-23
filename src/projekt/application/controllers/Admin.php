@@ -8,8 +8,11 @@ class Admin extends CI_Controller{
         $this->load->model('Logout_model');
         $this->load->model('HelperModels/ThreeAnsQuestion_model');
         $this->load->model('HelperModels/YNQuestion_model');
+        $this->load->model('Delete_model');
     }
-    
+    public function pickQuestionTypeForCreate(){
+        $this->load->view('Admin/PickQuestionType');
+    }
     public function show(){
         if($this->User_model->IsLoggedIn()){
             $user_id = $this->User_model->getLoggedInId();
@@ -127,5 +130,124 @@ class Admin extends CI_Controller{
         endswitch;
         
     }
+    
+   public function addYN(){
+        if($this->User_model->IsLoggedIn()){
+            $user_id = $this->User_model->getLoggedInId();
+            if($this->User_model->isAdmin($user_id)){
+                $this->addingYN();
+            }
+            else{
+                show_error("Nem rendelkezel admin jogosultsággal.");
+            }
+        }
+        else{
+            redirect(base_url().'Login/login');
+        }
+    }  
+    
+    
+   public function createYN($question, $ans){
+        return $this->YNQuestion_model->create($question, $ans);
+    }
+    
+   public function addingYN(){
+        $this->load->helper(array('form','url'));
+        $this->load->library('form_validation');  
+        
+        $this->load->view('Admin/AddYN');
+        
+         if($this->input->post('create')){
+           $this->form_validation->set_rules('question', 'Kérdés', 'required');
+           $this->form_validation->set_rules('answer', 'Válasz', 'required');
+           if ($this->form_validation->run() == TRUE)
+           {
+              $this->createYN($this->input->post('question'),$this->input->post('answer'));
+              $this->load->view('YNQuestion/created');
+            }
+            else{
+                 $this->load->view('User/RegErrors');
+            }
+        }
+    }
+    
+    
+    public function delete(){
+        if($this->User_model->IsLoggedIn()){
+            $user_id = $this->User_model->getLoggedInId();
+            if($this->User_model->isAdmin($user_id)){
+                $this->deleting();
+            }
+            else{
+                show_error("Nem rendelkezel admin jogosultsággal.");
+            }
+        }
+        else{
+            redirect(base_url().'Login/login');
+        }
+    }
+    
+   public function showForDelete(){
+        $recordYN = $this->ShowAll_model->showYN();  
+           $recordThreeAns = $this->ShowAll_model->showThreeAns();
+           if($recordYN == NULL && $recordThreeAns == NULL){
+               show_error('Nem található egy kérdés sem!');
+           }       
+          else{   
+              $listYN = $this->makeQuestionListYN($recordYN);
+              $listThreeAns = $this->makeQuestionListThreeAns($recordThreeAns);
+              $answerListThreeAns = $this->makeAnswerListThreeAns($recordThreeAns);
+              $view_params = [
+               'q1'    =>  $recordYN,
+               'q2' => $recordThreeAns,
+               'YNQ' => $listYN,
+               'ThreeAns' => $listThreeAns,
+               'Answer' => $answerListThreeAns
+            ];
 
+            $this->load->helper('form');           
+            return $view_params;   
+   }}
+   
+   public function successfullDelete(){
+       $this->load->view('YNQuestion/Delete');
+   }
+    
+   public function deleting(){
+        $this->load->helper(array('form','url'));
+        $this->load->library('form_validation');  
+        
+        $this->load->view('Admin/Delete', $this->showForDelete());
+        
+         if($this->input->post('delete')){
+           $this->form_validation->set_rules('QuestionType', 'Kérdés típusa', 'required');
+           $this->form_validation->set_rules('id', 'Kérdés ID', 'required');
+           if ($this->form_validation->run() == TRUE)
+           {              
+              $this->checkTypeAndDelete($this->input->post('QuestionType'),$this->input->post('id'));
+              redirect(base_url().'Admin/successfullDelete');
+            }
+            else{
+                 $this->load->view('User/RegErrors');
+            }
+        }
+    }
+    
+    public function checkTypeAndDelete($type, $id){
+        if($type == 'YN'){
+            $this->deleteYN($id);
+        }
+        else{
+            $this->deleteThreeAns($id);
+        }
+    }
+    
+    public function deleteThreeAns($id){
+        $this->Delete_model->deleteThreeAns($id);        
+    }
+    
+    public function deleteYN($id){
+        $this->Delete_model->deleteYN($id);       
+    }
+   
 }
