@@ -1,8 +1,7 @@
 ## Cél:
 Kvíz weboldal készítése. 2 típusú kérdés jelenhet meg egy kvíz során.
 Véletlenszerű kérdések jelennek meg, egymás után x db.
-A kvíz végén a felhasználó megnézheti az eredményeket, a helyes és az elhibázott válaszokat.
-- (A profilján megjelenik valamilyen típusú számláló. pl.: helyes megoldás/kitöltött.)
+A kvíz végén a felhasználó megnézheti az eredményeket, százalékot.
 
 ## Adatbázis táblák:
 - Harom: A 3 válaszlehetőséges kérdések
