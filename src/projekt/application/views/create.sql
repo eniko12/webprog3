@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1:3306
--- Létrehozás ideje: 2020. Máj 24. 15:09
+-- Létrehozás ideje: 2020. Máj 24. 15:34
 -- Kiszolgáló verziója: 5.7.26
 -- PHP verzió: 7.2.18
 
@@ -36,7 +36,14 @@ CREATE TABLE IF NOT EXISTS `answer` (
   `c` varchar(250) COLLATE utf8_hungarian_ci NOT NULL,
   `correct` varchar(250) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `answer`
+--
+
+INSERT INTO `answer` (`id`, `a`, `b`, `c`, `correct`) VALUES
+(1, 'Lázár Ervin', 'Fekete István', 'Bartos Erika', 'Fekete István');
 
 -- --------------------------------------------------------
 
@@ -52,6 +59,14 @@ CREATE TABLE IF NOT EXISTS `questions` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `questions`
+--
+
+INSERT INTO `questions` (`id`, `question`, `created`) VALUES
+('A3873594', 'Ki írta a Vuk című regényt?', '2020-05-24 15:32:49'),
+('A6952967', 'A Budapesti Operettszínház 1923-ban nyitott meg.', '2020-05-24 15:34:16');
+
 -- --------------------------------------------------------
 
 --
@@ -65,7 +80,14 @@ CREATE TABLE IF NOT EXISTS `threeansq` (
   `ans_id` int(11) NOT NULL,
   `type_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `threeansq`
+--
+
+INSERT INTO `threeansq` (`id`, `question_id`, `ans_id`, `type_id`) VALUES
+(1, 'A3873594', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -118,10 +140,16 @@ CREATE TABLE IF NOT EXISTS `yesnoq` (
   `answer` tinyint(1) NOT NULL,
   `type_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `yesnoq`
+--
+
+INSERT INTO `yesnoq` (`id`, `question_id`, `answer`, `type_id`) VALUES
+(1, 'A6952967', 1, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
