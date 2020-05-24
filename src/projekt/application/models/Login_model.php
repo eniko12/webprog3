@@ -11,7 +11,7 @@ class Login_model extends CI_Model{
     public function login($username, $passw){
         $u = $this->User_model->getByName($username);
         if($u == NULL){
-            show_error('Nem létezik ilyen felhasználó!');
+            return false;
         } 
         else
         {
@@ -21,13 +21,14 @@ class Login_model extends CI_Model{
                 return $this->doTheLogin($Id);          
              }
              else{
-                 return 0;
+                 return false;
              }
         }
     }
     
     public function checkPassw($user,$passw){
-        if($user->password == $passw){
+        $hash=$user->password;
+        if(password_verify($passw, $hash)){
             return true;
         }
         else { 
@@ -49,10 +50,11 @@ class Login_model extends CI_Model{
         if($this->checkIfNotLoggedIn($Id)){   
             $user2 = $this->User_model->getById($Id);
             $this->User_model->edit($Id,$user2[0]->email,$user2[0]->username,$user2[0]->password,$user2[0]->admin,1);
-          }
-         else{
-          return 0;
-         }
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
  

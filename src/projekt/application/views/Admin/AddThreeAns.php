@@ -16,12 +16,9 @@
     <header>
         <div class="container">
             <div class="row justify-content-center">
-            <div class="col-lg-2"></div>
             <div class="col-lg-8">
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                  <a class="nav-link<?php if((current_url())==(base_url())){?> active <?php }?>" href="#">Home</a>
-                </li>
+                <div class="row justify-content-center">
+            <ul class="nav nav-pills">                
                 <li class="nav-item">
                    <a class="nav-link<?php if((current_url())==(base_url().'Random/play')){?> active <?php }?>" href="<?php echo base_url(); ?>Random/play">Dobj egy quizt!</a>
                 </li>
@@ -31,25 +28,25 @@
                 <li>
                     <a class="nav-link" dropdown-toggle data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item <?php if((current_url())==(base_url().'Admin/pickQuestionTypeForCreate')){?> active <?php }?>" href="<?php echo base_url(); ?>Admin/pickQuestionTypeForCreate">Kérdés hozzáadás</a>
                         <a class="dropdown-item <?php if((current_url())==(base_url().'Admin/show')){?> active <?php }?>" href="<?php echo base_url(); ?>Admin/show">Összes kérdés</a>
-                        <a class="dropdown-item" href="#">Kérdés módosítása</a>
+                        <a class="dropdown-item <?php if((current_url())==(base_url().'Admin/pickQuestionTypeForCreate')){?> active <?php }?>" href="<?php echo base_url(); ?>Admin/pickQuestionTypeForCreate">Kérdés hozzáadás</a>
                         <a class="dropdown-item <?php if((current_url())==(base_url().'Admin/delete')){?> active <?php }?>" href="<?php echo base_url(); ?>Admin/delete">Kérdés törlése</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Felhasználók</a>
+                        <a class="dropdown-item <?php if((current_url())==(base_url().'User/ShowAll')){?> active <?php }?>" href="<?php echo base_url(); ?>User/ShowAll">Felhasználók</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item <?php if((current_url())==(base_url().'Admin/addNewAdmin')){?> active <?php }?>" href="<?php echo base_url(); ?>Admin/addNewAdmin">Új admin hozzáadása</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link<?php if((current_url())==(base_url().'Login/login')){?> active <?php }?>" href="<?php echo base_url(); ?>Login/login" tabindex="-1" aria-disabled="true">Bejelentkezés/Regisztáció</a>
+                  <a class="nav-link<?php if((current_url())==(base_url().'Registration/register')){?> active <?php }?>" href="<?php echo base_url(); ?>Login/login" tabindex="-1" aria-disabled="true">Bejelentkezés/Regisztáció</a>
                 </li>
                 <li>
                       <a class="nav-link<?php if((current_url())==(base_url().'Logout/logout')){?> active <?php }?>" href="<?php echo base_url(); ?>Logout/logout" tabindex="-1" aria-disabled="true">Kijelentkezés</a>
                 </li>
-            </ul>  
+            </ul> 
             </div>
-            <div class="col-lg-2"></div>
             </div>
-            
+            </div>            
         </div>
 </header> 
     

@@ -4,11 +4,13 @@ class Login extends CI_Controller{
         parent::__construct();
         
         $this->load->model('Login_model');
+         $this->load->model('Registration_model');
         $this->load->library('form_validation');
     }
     
     
-      public function startLogin(){
+    public function startLogin(){
+        $this->Registration_model->addFirstAdmin('admin@gmail.com', 'admin','admin');
         $this->load->view('User/Login');
     }
     public function login(){
@@ -23,14 +25,17 @@ class Login extends CI_Controller{
             }
             else
             {
-                $this->checkUserAndLogin();            
+                $this->checkUserAndLogin();
        }}}
 
     public function checkUserAndLogin(){
-             $ChangedRow=$this->Login_model->login($this->input->post('username'),$this->input->post('password'));
-              if($ChangedRow>0){
-              $this->load->view('User/RegSuccess');
-              }
+        if($this->Login_model->login($this->input->post('username'),  $this->input->post('password'))){
+            return $this->load->view('User/LoginSuccess');
+        }
+        else{
+            return $this->load->view('User/LoginFailed');
+        }
+                     
     }}
 
  

@@ -52,33 +52,54 @@
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-5">
-                <h3>Adatok:</h3>
-                <?php foreach($u as &$u): ?>
-                <div><h4></h4><br></div>
-                <div class="card">                    
-                    <div class="content">                        
-                        <h6>Email:</h6>
-                        <p><?=$u->email?></p>               
-                         <h6>Felhasználónév:</h6>
-                        <p><?=$u->username?></p>
-                    </div>
-                </div>
-                <?php if($u->admin == 1){?>
-                <div class="card  alert alert-info" role="alert">                    
-                    <div class="content">                        
-                        <h6>Admin jogosultságod van.</h6>
-                    </div>
-                </div>
-                <?php }?>
-               
-             <?php endforeach; ?>             
-            </div>
-        </div>
-    </div>
-    
+            <div class="col-lg-8">
+                <div class="row justify-content-center page-header"><h3>Töltse ki a formot az új admin regisztráláshoz!</h3></div>
+                <form action="" method="POST">
+                <div class="row justify-content-center">
+                 <div class="card card-item-logout">
+                    <?php echo form_open('Admin/registerNewAdmin'); ?>
+                    <div class="col-lg-12"> 
+                        
+                    <div class="row justify-content-center">
+                        <div class="logout">
+                            <?php echo form_label('Felhasználónév:');?><br>
+                            <?php echo form_input('username',set_value('username',''));?><br>
+                        </div>
 
-    
+                        <div class="logout">
+                            <?php echo form_label('Email cím:');?><br>             
+                            <?php echo form_input('email', set_value('email',''));?><br>
+                        </div>
+                    </div>
+                        
+                    <div class="row justify-content-center">
+                        <div class="logout">
+                            <?php echo form_label('Jelszó:');?><br>
+                           <?php echo form_password('password', '');?><br>
+                        </div>
+
+                        <div class="logout"> <?php echo form_label('Jelszó megerősítése:');?><br>  
+                            <?php echo form_password('password2', '');?><br>
+                        </div>
+                    </div>    
+                       
+                    <div class="logout">
+                        <?php echo form_submit('register', 'Regisztáció');?>
+                    </div>
+                    </div>
+                    </div>
+                 </div>
+                </div>
+                 </form>  
+                </div> 
+            </div>
+            </div>
+            <div class="col col-lg-2"></div>           
+        </div>         
+    </div>
+         
+
+
 <footer class="page-footer font-small blue fixed-bottom">
     <div class="container">
        <p>&copy; 2020 MyQuiz All rights reserved.</p>
@@ -86,5 +107,4 @@
 </footer>
 </body>
 </html>
-
-
+    
