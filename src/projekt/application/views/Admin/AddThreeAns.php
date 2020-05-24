@@ -53,7 +53,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="card card-item">
+                <div class="card card-item alert alert-primary">
                     <div class="content">
                         <?php echo form_open('Admin/addThreeAns'); ?>
                         <?php echo form_label('Kérdés:');?><br>

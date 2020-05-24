@@ -11,6 +11,10 @@ class Admin extends CI_Controller{
         $this->load->model('Delete_model');
         $this->load->model('Registration_model');
     }
+    
+    public function index(){
+        $this->show();
+    }
     public function pickQuestionTypeForCreate(){
         $this->load->view('Admin/PickQuestionType');
     }

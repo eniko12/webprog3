@@ -7,6 +7,9 @@ class Registration extends CI_Controller{
         
     }
     
+    public function index(){
+        $this->register();
+    }
     
     public function startReg(){
         $this->load->view('User/Registration');

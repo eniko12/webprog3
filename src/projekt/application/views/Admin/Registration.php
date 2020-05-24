@@ -56,7 +56,7 @@
                 <div class="row justify-content-center page-header"><h3>Töltse ki a formot az új admin regisztráláshoz!</h3></div>
                 <form action="" method="POST">
                 <div class="row justify-content-center">
-                 <div class="card card-item-logout">
+                 <div class="card card-item-logout card alert alert-info">
                     <?php echo form_open('Admin/registerNewAdmin'); ?>
                     <div class="col-lg-12"> 
                         

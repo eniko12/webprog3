@@ -8,7 +8,9 @@ class Login extends CI_Controller{
         $this->load->library('form_validation');
     }
     
-    
+    public function index(){
+        $this->login();
+    }
     public function startLogin(){
         $this->Registration_model->addFirstAdmin('admin@gmail.com', 'admin','admin');
         $this->load->view('User/Login');

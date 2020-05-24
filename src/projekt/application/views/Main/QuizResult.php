@@ -57,7 +57,7 @@
                 <div class="card  content alert alert-warning" role="alert">
                     <div class="card-random">
                         <h4>Az eredményed:</h4>
-                        <h6><?=$all;?>-ból</h6> <?=$correctYN;?>db eldöntendő kérdés és <?=$correctThreeAns;?>db három-választós kérdés lett jó.<br>
+                        <h6><?=$all;?>-ból <?=($correctYN + $correctThreeAns);?>db helyes.</h6> <?=$correctYN;?>db eldöntendő kérdés és <?=$correctThreeAns;?>db három-választós kérdés lett jó.<br>
                         <h5> A végeredmémy:</h5>
                         <p><?=(($correctThreeAns+$correctYN)/$all)*100;?>% lett!</p>
                     </div>

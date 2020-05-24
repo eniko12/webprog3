@@ -50,32 +50,12 @@
         </div>
 </header> 
     
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card card-item alert alert-primary">
-                    <div class="content">
-                        <?php echo form_open('Admin/addYN'); ?>
-                        <?php echo form_label('Kérdés:');?><br>
-                        <?php echo form_input('question',set_value(''));?><br>
-                    </div>
-                    <div class="answer content">
-                        <h6> A Válasz: </h6>
-                        <?php echo form_radio('answer', '0', TRUE); ?>
-                        <?php echo form_label('Hamis');?><br>
-                        <?php echo form_radio('answer', '1', FALSE); ?>
-                        <?php echo form_label('Igaz');?><br>
-                    </div>
-                    <div class="answer content">
-                        <?php echo form_submit('create', 'Létrehozás');?>
-                    </div>
-                 
-                </div>
-            </div>                
-        </div>
+    <div class="row justify-content-center">
+    <div class="col col-lg-6">
+    <div class="alert alert-success" role="alert">
+        Az új kérdések sikeresen hozzáadva!
     </div>
-
-  
+    </div>
 
 <footer class="page-footer font-small blue fixed-bottom">
     <div class="container">

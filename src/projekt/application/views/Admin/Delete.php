@@ -53,7 +53,7 @@
   <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="card card-item">
+                <div class="card card-item alert alert-primary">
                     <div class="content">
                          <h6> Adja meg a törlendő kérdés típusát!: </h6>
                         <?php echo form_open('Admin/deleting'); ?>
