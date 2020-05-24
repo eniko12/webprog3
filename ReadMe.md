@@ -1,4 +1,7 @@
-﻿# Weboldal leírása
+﻿Beadandó feladat Webprogramozás III.-ra.
+
+
+ # Weboldal leírása
 Random kvízeket generáló weboldal. 2 típusú kérdés jelenhet meg: Igaz-Hamis és Három választási lehetőséges.
 
 
