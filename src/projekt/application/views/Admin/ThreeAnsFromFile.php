@@ -57,6 +57,8 @@
                     <div class="content">
                         <h6>Figyelem!<br>
                             - A fájl ne tartalmazzon ékezeteket, és '|' karakterrel legyen tagolva.<br>
+                            - A fájl utolsó sor az legyen, ami még kérdést tartalmaz.<br>
+                            - Ne legyenek üres sorok!<br>                            
                             - Figyeljen, hogy a helyes válaszhoz pontosan ugyanazt a szöveget adja meg amit az opciónál adott meg.<br>
                             - A forma a következő:<br>
                             Kérdés|A) opció|B) opció|C) opció|Helyes válasz|<br>

@@ -8,7 +8,7 @@ class ThreeAnsFileUpload extends CI_Controller{
     
     public function index(){
         if($this->input->post('submit')){
-           $upload_config['max_size'] = 1000;
+           $upload_config['max_size'] = 5000;
            $upload_config['allowed_types'] = 'txt';
            $upload_config['upload_path'] = './uploads/ThreeAns/';
            $upload_config['file_name'] = 'threeAns';

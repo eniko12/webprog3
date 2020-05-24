@@ -58,6 +58,8 @@
                         <h6>Figyelem!<br>
                             - A fájl ne tartalmazzon ékezeteket, és '|' karakterrel legyen tagolva.<br>
                             - Az igaz választ 1-el, a hamista 0-val jelölje.<br>
+                            - A fájl utolsó sor az legyen, ami még kérdést tartalmaz.<br>
+                            - Ne legyenek üres sorok!<br>  
                             - A forma a következő:
                             Kérdés|Megoldás|<br>
                             <br>Példa:<br> A kerdesem helye?|1| VAGY A kerdesem helye?|0|</h6>

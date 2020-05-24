@@ -8,7 +8,7 @@ class YNFileUpload extends CI_Controller{
     
     public function index(){
         if($this->input->post('submit')){
-           $upload_config['max_size'] = 3000;
+           $upload_config['max_size'] = 5000;
            $upload_config['allowed_types'] = 'txt';
            $upload_config['upload_path'] = './uploads/YN/';
            $upload_config['file_name'] = 'YN';
