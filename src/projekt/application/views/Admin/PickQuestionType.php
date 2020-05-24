@@ -54,7 +54,10 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="card card-item alert alert-primary">
-                 <div class="content">
+                    <div class="content"><h3>Csak adminként használhatod ezeket a funkciókat.</h3></div>
+                </div>
+                <div class="card card-item alert alert-primary">
+                    <div class="content">
                     <a class="dropdown-item" href="<?php echo base_url(); ?>Admin/addThreeAns">Három-választós kérdés hozzáadása.</a>
                     <a class="dropdown-item" href="<?php echo base_url(); ?>ThreeAnsFileUpload">Három-választós kérdés hozzáadása külső fájlból.</a>
                 </div>

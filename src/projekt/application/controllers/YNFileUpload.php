@@ -4,9 +4,10 @@ class YNFileUpload extends CI_Controller{
         parent::__construct();
         
         $this->load->model('YNFileUpload_model'); 
+        $this->load->model('User_model');
     }
     
-    public function index(){
+    public function upload(){
         if($this->input->post('submit')){
            $upload_config['max_size'] = 5000;
            $upload_config['allowed_types'] = 'txt';
@@ -27,6 +28,22 @@ class YNFileUpload extends CI_Controller{
             $this->load->helper('form');
             $this->load->view('Admin/YNFromFile');    
         }
+    }
+    
+    public function index(){
+        if($this->User_model->IsLoggedIn()){
+            $user_id = $this->User_model->getLoggedInId();
+            if($this->User_model->isAdmin($user_id)){
+                $this->upload();
+            }
+            else{
+                show_error("Nem rendelkezel admin jogosultsággal.");
+            }
+        }
+        else{
+            redirect(base_url().'Login/login');
+        }
+        
     }
     
    

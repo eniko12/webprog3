@@ -55,7 +55,21 @@ class User extends CI_Controller{
         }
     }
     
-    public function showAll(){         
+    public function showAll(){
+        if($this->User_model->IsLoggedIn()){
+            $user_id = $this->User_model->getLoggedInId();
+            if($this->User_model->isAdmin($user_id)){
+                $this->showAllUser();
+            }
+            else{
+                show_error("Nem rendelkezel admin jogosultsággal.");
+            }
+        }
+        else{
+            redirect(base_url().'Login/login');
+        }
+    }
+    public function showAllUser(){         
         $record = $this->User_model->getAll();
         if($record == NULL){
             show_error('Nem található egy regisztrált felhasználó sem!');
