@@ -1,4 +1,6 @@
 ﻿Beadandó feladat Webprogramozás III.-ra.
+ 
+ A doc mappában van egy ThreeAnsQuestions.txt és egy YN.txt fájl. Ezeket érdemes feltölteni adminként az adatbázisba első használatkor, hogy gyorsan több kérdés legyen.
 
 
  # Weboldal leírása
